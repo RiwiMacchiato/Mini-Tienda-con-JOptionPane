@@ -8,14 +8,14 @@ import java.util.HashMap;
  */
 /**
  *
- * @author ingfr
+ * @author Juan Camilo
  */
 public class MiniStore {
     
     // find product by name
-    private static int indexOfNombre(ArrayList<String> nombres, String nombre) {
-        for (int i = 0; i < nombres.size(); i++) {
-            if (nombres.get(i).equalsIgnoreCase(nombre)) {
+    private static int indexOfName(ArrayList<String> names, String name) {
+        for (int i = 0; i < names.size(); i++) {
+            if (names.get(i).equalsIgnoreCase(name)) {
                 return i;
             }
         }
@@ -23,21 +23,20 @@ public class MiniStore {
     }
 
     // add new product
-    private static void addProducto(ArrayList<String> nombres, double[] precios,
-            HashMap<String, Integer> stock, int contador, String nombre, double precio,
-            int cantidad) {
-        nombres.add(nombre);
-        precios[contador] = precio;
-        stock.put(nombre, cantidad);
+    private static void addProduct(ArrayList<String> names, double[] prices,
+            HashMap<String, Integer> stock, int counter, String name, double price, int quantity) {
+        names.add(name);
+        prices[counter] = price;
+        stock.put(name, quantity);
     }
 
     // expand prices array when full
-    private static double[] expandPrecios(double[] precios) {
-        double[] nuevo = new double[precios.length * 2];
-        for (int i = 0; i < precios.length; i++) {
-            nuevo[i] = precios[i];
+    private static double[] expandPrices(double[] prices) {
+        double[] newArray = new double[prices.length * 2];
+        for (int i = 0; i < prices.length; i++) {
+            newArray[i] = prices[i];
         }
-        return nuevo;
+        return newArray;
     }
     
     /**
@@ -45,8 +44,8 @@ public class MiniStore {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        
+
+
         ArrayList<String> productNames = new ArrayList<>();
         double[] productPrices = new double[100];
         HashMap<String, Integer> productStock = new HashMap<>();
@@ -113,7 +112,7 @@ public class MiniStore {
                         name = name.trim();
 
                         // Check if product already exists
-                        int existingIndex = indexOfNombre(productNames, name);
+                        int existingIndex = indexOfName(productNames, name);
                         boolean exists = (existingIndex != -1);
 
                         if (exists) {
@@ -175,11 +174,11 @@ public class MiniStore {
 
                         // Check if need to expand prices array
                         if (productCount >= productPrices.length) {
-                            productPrices = expandPrecios(productPrices);
+                            productPrices = expandPrices(productPrices);
                         }
 
                         // Add product using utility method
-                        addProducto(productNames, productPrices, productStock, productCount, name,
+                        addProduct(productNames, productPrices, productStock, productCount, name,
                                 price, stock);
                         productCount++;
 
@@ -240,7 +239,7 @@ public class MiniStore {
                             productName = productName.trim();
 
                             // Search for the product using utility method
-                            int productIndex = indexOfNombre(productNames, productName);
+                            int productIndex = indexOfName(productNames, productName);
 
                             if (productIndex == -1) {
                                 JOptionPane.showMessageDialog(null, "El producto no existe.",
