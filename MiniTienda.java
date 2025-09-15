@@ -13,7 +13,7 @@ public class MiniTienda {
         int opcion;
         do {
             // Menu principal
-            String menu = "=== MINI TIENDA ===\n"
+            String menu = "MINI TIENDA\n"
                     + "1. Agregar producto\n"
                     + "2. Listar inventario\n"
                     + "3. Comprar producto\n"
